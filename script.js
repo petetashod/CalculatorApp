@@ -1,49 +1,62 @@
-const display = getElementById('display')
+let display = document.getElementById("display");
 const numbers = document.querySelectorAll('.numbers');
 const operations = document.querySelector('.operations')
 const equals = document.getElementById('equals');
-let firstSelection;
-let secondSelection;
+const clearButton = document.getElementById('clear');
+let result;
 let operator;
 let numberOne;
 let numberTwo;
-function getNumbers(number){
-    
-};
+
+numbers.forEach((number) => {
+    number.addEventListener('click',(e)=>{
+        let number = e.target.textContent
+        screenDisplay();
+        //console.log(number)
+        ///parseInt(number)
+    })
+})
+console.log(numbers)
+Array.from(operations).forEach((operation) => {
+    operation.addEventListener('click',(e) =>{
+        operations = e.target.textContent
+    })
+})
+
+clearButton.addEventListener('click',clear);
+
 
 function clear(){
-    let firstSelection = "";
-    let secondSelection = "";
+    display.textContent = '';
+    let numberONe= "";
+    let result = "";
     let operator = "";
+    let numberTwo = "";
 
 };
 
-function display(){
-
+function screenDisplay(){
+    let display = numbers.value;
 }
 
-function operatorSelection(){
-    if (operations == '+' || operations == '-' || 
-    operations == 'X' || operations == '/') { 
-        return operator = operations 
- }
-}
 
 function calculations(){
     let numberOne = parseFloat(firstSelection)
     let numberTwo = parseFloat(secondSelection)
     if (operator == '+'){
-        secondSelection = numberOne + numberTwo
+        result = numberOne + numberTwo
+        return parseFloat(result.toFixed(3))
     }
 
     else if (operator == '-'){
-        secondSelection = numberOne - numberTwo
+        return parseFloat(result.toFixed(3))
     }
     else if(operator == 'X'){
-        secondSelection = numberOne * numberTwo
+        return parseFloat(result.toFixed(3))
+
     }
     else if (operator == '/'){
-        secondSelection = numberOne / numberTwo
-    }
+        return parseFloat(result.toFixed(3))
 
+    }
 }
