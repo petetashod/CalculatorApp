@@ -24,9 +24,9 @@ operations.forEach((operation) => {
   operation.addEventListener("click", (e) => {
     operations = e.target.textContent;
     console.log(operations)
-    // if (firstOperand && secondOperand){
-    //     calculations();
-    // }
+    if (firstOperand && secondOperand){
+        calculations();
+    }
   });
 });
 
@@ -47,11 +47,7 @@ function screenDisplay() {
     firstOperand = secondOperand;
     firstOperand = "";
   }  
-  if (firstOperand && secondOperand && operator){
-    display.textContent = result;
-
-   }
-
+  
 }
 
 function calculations() {
@@ -61,8 +57,8 @@ function calculations() {
     result=numberOne + numberTwo;
     parseFloat(result.toFixed(3));
     firstNumber = "";
-
     return (display.textContent = result);
+
   } else if (operator == "-") {
     result= numberOne - numberTwo;
     return parseFloat(result.toFixed(3));
