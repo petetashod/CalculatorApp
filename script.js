@@ -23,16 +23,14 @@ numbers.forEach((number) => {
 operations.forEach((operation) => {
   operation.addEventListener("click", (e) => {
     operations = e.target.textContent;
-    console.log(operations)
-    if (firstOperand && secondOperand){
-        calculations();
-    }
+    
+    
   });
 });
 
 clearButton.addEventListener("click", clear);
 equals.addEventListener("click", calculations);
-
+console.log(equals);
 function clear() {
   display.textContent = "";
   firstOperand = "";
@@ -44,11 +42,14 @@ function clear() {
 function screenDisplay() {
     display.textContent = firstOperand;
   if (firstOperand !== null) {
-    firstOperand = secondOperand;
-    firstOperand = "";
+    secondOperand = firstOperand;
   }  
+  if (secondOperand !== null) {
+  firstOperand = "";
   
+  }
 }
+
 
 function calculations() {
   let numberOne = parseFloat(firstOperand);
@@ -57,7 +58,7 @@ function calculations() {
     result=numberOne + numberTwo;
     parseFloat(result.toFixed(3));
     firstNumber = "";
-    return (display.textContent = result);
+    return display.textContent = result;
 
   } else if (operator == "-") {
     result= numberOne - numberTwo;
@@ -71,3 +72,4 @@ function calculations() {
   }
   
 }
+
