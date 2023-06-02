@@ -13,6 +13,9 @@ let secondOperand = "";
 numbers.forEach((number) => {
   number.addEventListener("click", (e) => {
     firstOperand = e.target.textContent;
+    if (firstOperand !== null && operator !== null){
+      secondOperand = e.target.textContent
+    }
     screenDisplay();
     //console.log(numbers)
     ///parseInt(number)
@@ -22,7 +25,7 @@ numbers.forEach((number) => {
 
 operations.forEach((operation) => {
   operation.addEventListener("click", (e) => {
-    operations = e.target.textContent;
+    operator = e.target.textContent;
     
     
   });
@@ -40,36 +43,49 @@ function clear() {
 }
 
 function screenDisplay() {
-    display.textContent = firstOperand;
-  if (firstOperand !== null) {
-    secondOperand = firstOperand;
+  if (firstOperand) {
+    display.textContent = firstOperand 
   }  
-  if (secondOperand !== null) {
-  firstOperand = "";
-  
+  if (firstOperand && operator){
+    display.textContent = secondOperand
+    
   }
+  
 }
 
 
 function calculations() {
   let numberOne = parseFloat(firstOperand);
   let numberTwo = parseFloat (secondOperand);
-  if (operator == "+") {
-    result=numberOne + numberTwo;
-    parseFloat(result.toFixed(3));
-    firstNumber = "";
-    return display.textContent = result;
+  if (numberOne && numberTwo && operator){
+    
+    if (operator == "+") {
+      result = numberOne + numberTwo;
+      parseFloat(result.toFixed(3));
+      firstNumber = "";
+      return display.textContent = result;
+  
+    } else if (operator == "-") {
+      result= numberOne - numberTwo;
+      parseFloat(result.toFixed(3));
+      firstNumber = "";
+      return display.textContent = result;
+    } else if (operator == "X") {
+      result= numberOne * numberTwo;
+      parseFloat(result.toFixed(3));
+      firstNumber = "";
+      return display.textContent = result;
+    } else if (operator == "/") {
+      result= numberOne / numberTwo;
+      parseFloat(result.toFixed(3));
+      firstNumber = "";
+      return display.textContent = result;
+    }
 
-  } else if (operator == "-") {
-    result= numberOne - numberTwo;
-    return parseFloat(result.toFixed(3));
-  } else if (operator == "X") {
-    result= numberOne * numberTwo;
-    return parseFloat(result.toFixed(3));
-  } else if (operator == "/") {
-    result= numberOne / numberTwo;
-    return parseFloat(result.toFixed(3));
   }
+  
   
 }
 
+// ask andy why the number you choose is getting passed into both operands at the same time
+// even though you are choosing to separate numbers 
