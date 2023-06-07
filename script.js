@@ -5,6 +5,7 @@ const numbers = document.querySelectorAll(".numbers");
 let operations = document.querySelectorAll(".operations");
 const equals = document.getElementById("equal");
 const clearButton = document.getElementById("clearButton");
+const period = document.getElementById("period");
 let result = "";
 let operator = "";
 let firstOperand = "";
@@ -12,13 +13,15 @@ let secondOperand = "";
 
 numbers.forEach((number) => {
   number.addEventListener("click", (e) => {
-    firstOperand = e.target.textContent;
-    if (firstOperand !== null && operator !== null){
+    // if firstOperand is empty then set firstOperand 
+    // otherwise 
+    if (firstOperand == "" || firstOperand.length < 12) {
+      firstOperand += e.target.textContent;
+    }
+    if (firstOperand !== "" && operator !== ""){
       secondOperand = e.target.textContent
     }
     screenDisplay();
-    //console.log(numbers)
-    ///parseInt(number)
   });
 });
 
@@ -30,7 +33,22 @@ operations.forEach((operation) => {
     
   });
 });
+period.addEventListener("click", (e) => {
+  // you want to append the dot to display if clicked on
 
+  if (operator == ""){
+    display.textContent = firstOperand.concat(".")
+    
+  } else if(firstOperand !==""){
+    
+  }
+  if (!operator) {
+      secondOperand.concat(period)
+  }
+
+
+
+});
 clearButton.addEventListener("click", clear);
 equals.addEventListener("click", calculations);
 console.log(equals);
@@ -87,5 +105,3 @@ function calculations() {
   
 }
 
-// ask andy why the number you choose is getting passed into both operands at the same time
-// even though you are choosing to separate numbers 
