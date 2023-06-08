@@ -15,12 +15,14 @@ numbers.forEach((number) => {
   number.addEventListener("click", (e) => {
     // if firstOperand is empty then set firstOperand 
     // otherwise 
-    if (firstOperand == "" || firstOperand.length < 12) {
+  
+    if (firstOperand !== "" && operator !== "" && secondOperand.length < 12) {
+      secondOperand += e.target.textContent
+    }
+    if (firstOperand == "" || firstOperand.length < 12 && secondOperand == "") {
       firstOperand += e.target.textContent;
     }
-    if (firstOperand !== "" && operator !== ""){
-      secondOperand = e.target.textContent
-    }
+  
     screenDisplay();
   });
 });
@@ -35,16 +37,20 @@ operations.forEach((operation) => {
 });
 period.addEventListener("click", (e) => {
   // you want to append the dot to display if clicked on
-
+ let numberPressed = e.target.textContent
   if (operator == ""){
-    display.textContent = firstOperand.concat(".")
+    firstOperand += ".";
+    display.textContent += ".";
     
-  } else if(firstOperand !==""){
-    
+  } else if(numberPressed =="." && display.textContent == "."){
+    display.textContent ="";
   }
-  if (!operator) {
-      secondOperand.concat(period)
+  
+  else if(firstOperand !==""){
+    secondOperand += "."
+    display.textContent += "."
   }
+  
 
 
 
@@ -62,10 +68,11 @@ function clear() {
 
 function screenDisplay() {
   if (firstOperand) {
-    display.textContent = firstOperand 
+    display.textContent = firstOperand;
+  
   }  
   if (firstOperand && operator){
-    display.textContent = secondOperand
+    display.textContent = secondOperand;
     
   }
   
@@ -79,7 +86,7 @@ function calculations() {
     
     if (operator == "+") {
       result = numberOne + numberTwo;
-      parseFloat(result.toFixed(3));
+      parseFloat(result.toFixed(2));
       firstNumber = "";
       return display.textContent = result;
   
