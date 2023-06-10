@@ -17,12 +17,15 @@ numbers.forEach((number) => {
     // otherwise 
   
     if (firstOperand !== "" && operator !== "" && secondOperand.length < 12) {
-      secondOperand += e.target.textContent
+      secondOperand += e.target.textContent;
+      
     }
     if (firstOperand == "" || firstOperand.length < 12 && secondOperand == "") {
       firstOperand += e.target.textContent;
+      
+    
     }
-  
+    
     screenDisplay();
   });
 });
@@ -32,23 +35,22 @@ operations.forEach((operation) => {
   operation.addEventListener("click", (e) => {
     operator = e.target.textContent;
     
-    
   });
 });
-period.addEventListener("click", (e) => {
+period.addEventListener("click", () => {
   // you want to append the dot to display if clicked on
- let numberPressed = e.target.textContent
+  // if operator is empty (update the firstOperand)
   if (operator == ""){
-    firstOperand += ".";
-    display.textContent += ".";
-    
-  } else if(numberPressed =="." && display.textContent == "."){
-    display.textContent ="";
-  }
-  
-  else if(firstOperand !==""){
+    // if firstoperand does not contain a decimal
+    if (!firstOperand.includes(".")) {
+     // then
+     firstOperand += ".";
+     display.textContent = firstOperand; 
+    }   
+  }   
+  else if(!secondOperand.includes(".")) {
     secondOperand += "."
-    display.textContent += "."
+    display.textContent = secondOperand;
   }
   
 
@@ -65,17 +67,19 @@ function clear() {
   operator = "";
   secondOperand = "";
 }
-
+// write out of the steps for how to add 1+1+1+1 
+// write every single step 
 function screenDisplay() {
   if (firstOperand) {
     display.textContent = firstOperand;
-  
+    firstOperand = "";
+    
   }  
   if (firstOperand && operator){
     display.textContent = secondOperand;
     
   }
-  
+ 
 }
 
 
