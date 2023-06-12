@@ -13,17 +13,12 @@ let secondOperand = "";
 
 numbers.forEach((number) => {
   number.addEventListener("click", (e) => {
-    // if firstOperand is empty then set firstOperand 
-    // otherwise 
   
     if (firstOperand !== "" && operator !== "" && secondOperand.length < 12) {
       secondOperand += e.target.textContent;
-      
     }
     if (firstOperand == "" || firstOperand.length < 12 && secondOperand == "") {
       firstOperand += e.target.textContent;
-      
-    
     }
     
     screenDisplay();
@@ -34,14 +29,19 @@ numbers.forEach((number) => {
 operations.forEach((operation) => {
   operation.addEventListener("click", (e) => {
     operator = e.target.textContent;
-    
+    if ( operator && secondOperand){
+        calculations();
+        operator = result;
+        display.textContent = operator;
+        operator="";
+        firstOperand="";
+        answer;
+        
+     }
   });
 });
 period.addEventListener("click", () => {
-  // you want to append the dot to display if clicked on
-  // if operator is empty (update the firstOperand)
   if (operator == ""){
-    // if firstoperand does not contain a decimal
     if (!firstOperand.includes(".")) {
      // then
      firstOperand += ".";
@@ -58,8 +58,7 @@ period.addEventListener("click", () => {
 
 });
 clearButton.addEventListener("click", clear);
-equals.addEventListener("click", calculations);
-console.log(equals);
+const answer = equals.addEventListener("click", calculations);
 function clear() {
   display.textContent = "";
   firstOperand = "";
@@ -67,13 +66,10 @@ function clear() {
   operator = "";
   secondOperand = "";
 }
-// write out of the steps for how to add 1+1+1+1 
-// write every single step 
+
 function screenDisplay() {
   if (firstOperand) {
     display.textContent = firstOperand;
-    firstOperand = "";
-    
   }  
   if (firstOperand && operator){
     display.textContent = secondOperand;
