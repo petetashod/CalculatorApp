@@ -31,11 +31,9 @@ operations.forEach((operation) => {
     operator = e.target.textContent;
     if ( operator && secondOperand){
         calculations();
-        operator = result;
-        display.textContent = operator;
-        operator="";
-        firstOperand="";
-        answer;
+        firstOperand ="";
+      
+        
         
      }
   });
@@ -86,7 +84,7 @@ function calculations() {
     
     if (operator == "+") {
       result = numberOne + numberTwo;
-      parseFloat(result.toFixed(2));
+      parseFloat(result.toFixed(3));
       firstNumber = "";
       return display.textContent = result;
   
