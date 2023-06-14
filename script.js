@@ -31,7 +31,6 @@ operations.forEach((operation) => {
     operator = e.target.textContent;
     if ( operator && secondOperand){
         calculations();
-        firstOperand ="";
       
         
         
@@ -85,24 +84,29 @@ function calculations() {
     if (operator == "+") {
       result = numberOne + numberTwo;
       parseFloat(result.toFixed(3));
-      firstNumber = "";
-      return display.textContent = result;
+      display.textContent = result;
+      firstOperand = result;
+      secondOperand = "";
   
     } else if (operator == "-") {
       result= numberOne - numberTwo;
       parseFloat(result.toFixed(3));
-      firstNumber = "";
-      return display.textContent = result;
+      display.textContent = result;
+      firstOperand = result;
+      secondOperand = "";
+
     } else if (operator == "X") {
       result= numberOne * numberTwo;
       parseFloat(result.toFixed(3));
-      firstNumber = "";
-      return display.textContent = result;
+      display.textContent = result;
+      firstOperand = result;
+      secondOperand = "";
     } else if (operator == "/") {
       result= numberOne / numberTwo;
       parseFloat(result.toFixed(3));
-      firstNumber = "";
-      return display.textContent = result;
+      display.textContent = result;
+      firstOperand = result;
+      secondOperand = "";
     }
 
   }
