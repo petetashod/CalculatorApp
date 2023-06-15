@@ -21,7 +21,6 @@ numbers.forEach((number) => {
     if (firstOperand == "" || firstOperand.length < 12 && secondOperand == "") {
       firstOperand += e.target.textContent;
     }
-    
     screenDisplay();
   });
 });
