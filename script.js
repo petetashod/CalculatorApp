@@ -10,7 +10,6 @@ let result = "";
 let operator = "";
 let firstOperand = "";
 let secondOperand = "";
-let initialOperations ="";
 
 numbers.forEach((number) => {
   number.addEventListener("click", (e) => {
@@ -28,12 +27,13 @@ numbers.forEach((number) => {
 
 operations.forEach((operation) => {
   operation.addEventListener("click", (e) => {
-    operator = e.target.textContent;
+    
     
     if ( operator && secondOperand){
        calculations();
        
-    }  
+    } 
+    operator = e.target.textContent; 
   });
 });
 period.addEventListener("click", () => {
