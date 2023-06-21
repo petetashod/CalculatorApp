@@ -18,4 +18,4 @@ The Calculator App was fun and challenging at times because of how many processe
 the steps down one by one in order to make sure a step was not missed. In all I had a blast creating a calculator.
 ## Author
 
--   **Tashod Peterson** - _Full-Stack Software Developer_ - [LinkedIn](www.linkedin.com/in/tashod-peterson)
+-   **Tashod Peterson** - _Full-Stack Software Developer_ - [LinkedIn] (www.linkedin.com/in/tashod-peterson)
